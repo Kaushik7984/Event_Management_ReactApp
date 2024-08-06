@@ -6,8 +6,8 @@ import {
   useNavigate,
   useNavigation,
 } from "react-router-dom";
-
 import classes from "./EventForm.module.css";
+import { url as url1 } from "./api";
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
@@ -23,57 +23,66 @@ function EventForm({ method, event }) {
   return (
     <Form method={method} className={classes.form}>
       {data && data.errors && (
-        <ul>
+        <ul className={classes.errors}>
           {Object.values(data.errors).map((err) => (
             <li key={err}>{err}</li>
           ))}
         </ul>
       )}
-      <p>
+      <div className={classes.formGroup}>
         <label htmlFor="title">Title</label>
         <input
           id="title"
+          className={classes.inputBg}
           type="text"
           name="title"
           required
           defaultValue={event ? event.title : ""}
         />
-      </p>
-      <p>
+      </div>
+      <div className={classes.formGroup}>
         <label htmlFor="image">Image</label>
         <input
           id="image"
+          className={classes.inputBg}
           type="url"
           name="image"
           required
           defaultValue={event ? event.image : ""}
         />
-      </p>
-      <p>
+      </div>
+      <div className={classes.formGroup}>
         <label htmlFor="date">Date</label>
         <input
           id="date"
+          className={classes.inputBg}
           type="date"
           name="date"
           required
           defaultValue={event ? event.date : ""}
         />
-      </p>
-      <p>
+      </div>
+      <div className={classes.formGroup}>
         <label htmlFor="description">Description</label>
         <textarea
           id="description"
+          className={classes.inputBg}
           name="description"
           rows="5"
           required
           defaultValue={event ? event.description : ""}
         />
-      </p>
+      </div>
       <div className={classes.actions}>
-        <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+        <button
+          type="button"
+          onClick={cancelHandler}
+          disabled={isSubmitting}
+          className={classes.cancelButton}
+        >
           Cancel
         </button>
-        <button disabled={isSubmitting}>
+        <button disabled={isSubmitting} className={classes.submitButton}>
           {isSubmitting ? "Submitting..." : "Save"}
         </button>
       </div>
@@ -82,6 +91,7 @@ function EventForm({ method, event }) {
 }
 
 export default EventForm;
+
 
 export async function action({ request, params }) {
   const method = request.method;
@@ -92,14 +102,14 @@ export async function action({ request, params }) {
     title: data.get("title"),
     image: data.get("image"),
     date: data.get("date"),
-    description: data.get("description"), 
+    description: data.get("description"),
   };
 
-  let url = "http://localhost:8080/events";
+  let url = url1;
 
   if (method === "PATCH") {
     const eventId = params.eventId;
-    url = "http://localhost:8080/events/" + eventId;
+    url = `${url}/` + eventId;
   }
 
   const response = await fetch(url, {

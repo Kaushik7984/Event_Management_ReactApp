@@ -1,0 +1,1 @@
+export const url = "https://event-management-reactapp.onrender.com/events"

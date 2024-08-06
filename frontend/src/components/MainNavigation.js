@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-
 import classes from './MainNavigation.module.css';
 import NewsletterSignup from './NewsletterSignup';
 
@@ -12,7 +11,7 @@ function MainNavigation() {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? `${classes.link} ${classes.active}` : classes.link
               }
               end
             >
@@ -23,7 +22,7 @@ function MainNavigation() {
             <NavLink
               to="/events"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? `${classes.link} ${classes.active}` : classes.link
               }
             >
               Events
@@ -33,7 +32,7 @@ function MainNavigation() {
             <NavLink
               to="/newsletter"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive ? `${classes.link} ${classes.active}` : classes.link
               }
             >
               Newsletter

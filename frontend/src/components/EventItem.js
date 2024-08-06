@@ -5,22 +5,24 @@ function EventItem({ event }) {
   const submit = useSubmit();
 
   function startDeleteHandler() {
-    const proceed = window.confirm('Are you sure?')
+    const proceed = window.confirm('Are you sure?');
 
-    if(proceed){
-      submit(null, {method : 'delete'})
+    if (proceed) {
+      submit(null, { method: 'delete' });
     }
   }
 
   return (
     <article className={classes.event}>
-      <img src={event.image} alt={event.title} />
-      <h1>{event.title}</h1>
-      <time>{event.date}</time>
-      <p>{event.description}</p>
+      <img src={event.image} alt={event.title} className={classes.image} />
+      <div className={classes.content}>
+        <h1 className={classes.title}>{event.title}</h1>
+        <time className={classes.date}>{event.date}</time>
+        <p className={classes.description}>{event.description}</p>
+      </div>
       <menu className={classes.actions}>
-        <Link to="edit">Edit</Link>
-        <button onClick={startDeleteHandler}>Delete</button>
+        <Link to="edit" className={classes.editButton}>Edit</Link>
+        <button onClick={startDeleteHandler} className={classes.deleteButton}>Delete</button>
       </menu>
     </article>
   );

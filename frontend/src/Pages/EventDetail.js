@@ -8,6 +8,7 @@ import {
   useRouteLoaderData,
 } from "react-router-dom";
 import EventItem from "../components/EventItem";
+import { url } from "../components/api";
 
 function EventDetailPage() {
   const data = useRouteLoaderData("event-detail");
@@ -22,8 +23,8 @@ function EventDetailPage() {
 export default EventDetailPage;
 
 export async function loader({ request, params }) {
-  const id = params.eventId ; 
-  const response = await fetch("http://localhost:8080/events/" + id);
+  const id = params.eventId ;
+  const response = await fetch(`${url}/` + id);
 
   if (!response.ok) {
     throw json(
@@ -37,7 +38,7 @@ export async function loader({ request, params }) {
 
 export async function action({ params, request }) {
 
-  const response = await fetch("http://localhost:8080/events/" + params.eventId, {
+  const response = await fetch(`${url}/` + params.eventId, {
     method: request.method,
   });
 
