@@ -40,7 +40,7 @@ function MainNavigation() {
           </li>
         </ul>
       </nav>
-      <NewsletterSignup />
+      {/* <NewsletterSignup className={classes.newslatters} /> */}
     </header>
   );
 }

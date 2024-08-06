@@ -1,5 +1,5 @@
 .header {
-  background-color: #ffffff;  
+  /* background-color: #ffffff;   */
   border-bottom: 3px solid #c0392b; 
   padding: 20px 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,7 +59,7 @@
   }
 
   .list {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 15px;
     align-items: center; 
   }

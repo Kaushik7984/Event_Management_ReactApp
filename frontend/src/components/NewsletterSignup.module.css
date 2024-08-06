@@ -54,6 +54,7 @@
   .newsletter input,
   .newsletter button {
     font-size: 14px;
+  
   }
 
   .newsletter button {
@@ -64,6 +65,7 @@
 @media (max-width: 480px) {
   .newsletter {
     padding: 10px;
+    /* display: none; */
   }
 
   .newsletter input,
