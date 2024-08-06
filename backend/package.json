@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "vercel": "^35.2.3"
   }
 }

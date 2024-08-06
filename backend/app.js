@@ -21,4 +21,9 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message });
 });
 
+app.get("/",(req,res)=> {
+  res.send("working")
+})
+
 app.listen(8080);
+console.log("Server running")

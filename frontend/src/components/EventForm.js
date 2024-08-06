@@ -92,7 +92,7 @@ export async function action({ request, params }) {
     title: data.get("title"),
     image: data.get("image"),
     date: data.get("date"),
-    description: data.get("description"),
+    description: data.get("description"), 
   };
 
   let url = "http://localhost:8080/events";
