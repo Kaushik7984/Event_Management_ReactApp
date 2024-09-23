@@ -1,6 +1,8 @@
-const bodyParser = require('body-parser');
-const express = require('express');
+require('dotenv').config({ path: './data/.env' }); 
 
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const eventRoutes = require('./routes/events');
 
 const app = express();
@@ -13,6 +15,14 @@ app.use((req, res, next) => {
   next();
 });
 
+
+const mongoUrl = process.env.MONGODB_URL;
+const port = process.env.PORT || 8080;
+
+mongoose.connect(mongoUrl)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Failed to connect to MongoDB', err));
+
 app.use('/events', eventRoutes);
 
 app.use((error, req, res, next) => {
@@ -21,9 +31,10 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message });
 });
 
-app.get("/",(req,res)=> {
-  res.send("working")
-})
+app.get("/", (req, res) => {
+  res.send("Server is working!");
+});
 
-app.listen(8080);
-console.log("Server running")
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

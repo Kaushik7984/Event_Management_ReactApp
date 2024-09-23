@@ -39,7 +39,8 @@ export async function loader({ request, params }) {
 export async function action({ params, request }) {
 
   const response = await fetch(`${url}/` + params.eventId, {
-    method: request.method,
+    // method: request.method,
+    method: 'DELETE'
   });
 
   if (!response.ok) {
