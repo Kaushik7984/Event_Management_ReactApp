@@ -1,1 +1,1 @@
-export const url = "http://localhost:8080/events"
+export const url = "https://event-management-reactapp.onrender.com/events"
